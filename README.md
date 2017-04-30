@@ -5,9 +5,11 @@ This simple but powerful verification is made by intercepting a missed call from
 ## Getting Started
 
 
+
 ### Prerequisites
 
 There is no need to include the checkMobi Swift Framework since the missed call is handled by HTTP requests.
+In my case i used Alamofire as 
 
 ### Code
 
@@ -50,6 +52,8 @@ class CheckMobi: NSObject {
                         let responseValue = response.value! as? NSDictionary
                         let returnedValidationID = responseValue?.object(forKey: "id")! as! String
                         
+                        /* save the ID returned in the response. We will need it when validating the last 4 Digits of the calling number. */ 
+                        
                         completionHandler(returnedValidationID)
                     }
                 }
@@ -90,26 +94,10 @@ class CheckMobi: NSObject {
 
 ```
 
-## Deployment
 
-Add additional notes about how to deploy this on a live system
+## Frameworks used
 
-## Built With
-
-```
-Alamofire 
-```
-
-## Versioning
-
-```
-Cocoapods 
-
-```
-
-## Authors
-
-* **Stavros Filippidis** 
+Alamofire -> https://github.com/Alamofire/Alamofire
 
 ## License
 
