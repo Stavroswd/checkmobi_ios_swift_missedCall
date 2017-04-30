@@ -109,7 +109,7 @@ Cocoapods
 
 ## Authors
 
-* **Stavros Filippidis** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Stavros Filippidis** 
 
 ## License
 
