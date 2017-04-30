@@ -45,6 +45,7 @@ class CheckMobi: NSObject {
                 if let responseValue = response.value as? NSDictionary{
 
                     if let errorCode = responseValue.object(forKey:"code") as? NSNumber{
+                        /* You can handle all the other errors here as well.*/ 
                         if(errorCode == 2){
                             completionHandler("NonValidNumber")
                         }
@@ -52,7 +53,11 @@ class CheckMobi: NSObject {
                         let responseValue = response.value! as? NSDictionary
                         let returnedValidationID = responseValue?.object(forKey: "id")! as! String
                         
-                        /* save the ID returned in the response. We will need it when validating the last 4 Digits of the calling number. */ 
+                        /* Checkmobi was able to call a phonenumber. 
+                           You now need to save the returned validation id..
+                           We will need it together with the last 4 Digits of 
+                           the calling number later. 
+                        */ 
                         
                         completionHandler(returnedValidationID)
                     }
@@ -80,11 +85,10 @@ class CheckMobi: NSObject {
                         print("Error Code \(errorCode)")
                         completionHandler(false)
                     }else{
-                        
+                        /*  The 4 Digits provided by the users were correct. The validation worked. */ 
                         completionHandler(true)
                     }
                 }
-                
             case .failure:
                 completionHandler(false)
             }
