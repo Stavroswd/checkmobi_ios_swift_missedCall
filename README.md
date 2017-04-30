@@ -13,54 +13,53 @@ There is no need to include the checkMobi Swift Framework since the missed call 
 
 
 ```
-// Performing the Call 
 
- let baseURLForValidation = "https://api.checkmobi.com/v1/validation/request"
+import UIKit
+import Alamofire
+import CallKit
 
- let validationParameters: Parameters = [
+class CheckMobi: NSObject {
+    
+    let baseURLForCall = "https://api.checkmobi.com/v1/validation/request"
+    let baseURLForPinValidation = "https://api.checkmobi.com/v1/validation/verify"
+
+    let headers: HTTPHeaders = [
+        "Authorization": "7C90A4CB-B18B-40E2-A55F-0859250B9F2F"
+    ]
+    
+    func makeMissedCallWithNumber(phoneNumber:String, completionHandler: @escaping (String) -> Void){
+        
+        let parameters: Parameters = [
             "number": phoneNumber,
             "type": "reverse_cli",
             "platform": "ios"
         ]
-        
- let headers: HTTPHeaders = [
-            "Authorization": "YOUR_API_KEY"
-        ]
-  
-  Alamofire.request(baseURLForValidation, method: .post, parameters: validationParameters, encoding: JSONEncoding.default,headers:headers).responseJSON { (response) in
+   
+        Alamofire.request(baseURLForCall, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers:headers).responseJSON { (response) in
             
             switch response.result {
             case .success:
-    
+                
                 if let responseValue = response.value as? NSDictionary{
-                    
+
                     if let errorCode = responseValue.object(forKey:"code") as? NSNumber{
-                        
                         if(errorCode == 2){
-                            print("Wrong Number!")
                             completionHandler("NonValidNumber")
                         }
                     }else{
-                        let res = response.value! as? NSDictionary
-                        let id = res?.object(forKey: "id")! as! String
+                        let responseValue = response.value! as? NSDictionary
+                        let returnedValidationID = responseValue?.object(forKey: "id")! as! String
                         
-                        print("The response when making the missed call \(res)")
-                        
-                        completionHandler(id)
+                        completionHandler(returnedValidationID)
                     }
                 }
-            case .failure(let error):
+            case .failure:
                 completionHandler("Error!")
             }
         }
-        
-    // Validating the last 4 Digits 
+    }
     
-            let BASE_PIN_VALIDATION_URL = "https://api.checkmobi.com/v1/validation/verify"
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "7C90A4CB-B18B-40E2-A55F-0859250B9F2F"
-        ]
+    func validatePin(pin:String,validationId:String,completionHandler: @escaping (Bool) -> Void){
         
         let parameters: Parameters = [
             "id": validationId,
@@ -68,30 +67,26 @@ There is no need to include the checkMobi Swift Framework since the missed call 
             "use_server_hangup": true
         ]
         
-        Alamofire.request(BASE_PIN_VALIDATION_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers:headers).responseJSON { (response) in
+        Alamofire.request(baseURLForPinValidation, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers:headers).responseJSON { (response) in
             switch response.result {
             case .success:
                 
                 if let responseValue = response.value as? NSDictionary{
                     if let errorCode = responseValue.object(forKey:"code") as? NSNumber{
-                        print("Error!")
-                        print("Error Code!")
+                        print("Error Code \(errorCode)")
                         completionHandler(false)
                     }else{
-                        let res = response.value! as? NSDictionary
-                        let id = res?.object(forKey: "id")! as! String
-                        print("The Correct Id from the Response \(id)")
+                        
                         completionHandler(true)
                     }
                 }
                 
-            case .failure(let error):
-                print(error)
+            case .failure:
                 completionHandler(false)
             }
         }
-        
-        
+    }
+}
 
 ```
 
