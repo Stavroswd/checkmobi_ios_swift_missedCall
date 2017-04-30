@@ -24,7 +24,7 @@ class CheckMobi: NSObject {
     let baseURLForPinValidation = "https://api.checkmobi.com/v1/validation/verify"
 
     let headers: HTTPHeaders = [
-        "Authorization": "7C90A4CB-B18B-40E2-A55F-0859250B9F2F"
+        "Authorization": "YOUR_API_KEY"
     ]
     
     func makeMissedCallWithNumber(phoneNumber:String, completionHandler: @escaping (String) -> Void){
