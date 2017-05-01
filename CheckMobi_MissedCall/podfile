@@ -1,0 +1,9 @@
+
+
+use_frameworks!
+
+target ‘CheckMobi_MissedCall’ do
+
+pod 'Alamofire’
+
+end

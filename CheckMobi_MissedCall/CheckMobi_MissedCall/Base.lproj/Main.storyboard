@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Phonenumber Entry View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PhonenumberEntryViewController" customModule="CheckMobi_MissedCall" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. +49162.. " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DtP-Mn-A9O">
+                                <rect key="frame" x="72" y="199" width="246" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type in a your phone number. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k69-sf-lqN">
+                                <rect key="frame" x="72" y="138" width="231" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j46-ln-d7b">
+                                <rect key="frame" x="238" y="314" width="80" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="sRV-q5-9SY"/>
+                                    <constraint firstAttribute="height" constant="35" id="yH8-Ht-q57"/>
+                                </constraints>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestCallForVerification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eKw-Id-8nj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="j46-ln-d7b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-2" id="Mvt-dO-1Zc"/>
+                            <constraint firstItem="k69-sf-lqN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TQ3-UN-cvt"/>
+                            <constraint firstItem="j46-ln-d7b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="90.5" id="myH-g9-B0z"/>
+                            <constraint firstItem="k69-sf-lqN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-185.25" id="xb9-EO-fPI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirm" destination="j46-ln-d7b" id="aDJ-VP-erU"/>
+                        <outlet property="phoneNumberTextField" destination="DtP-Mn-A9O" id="rty-fa-krH"/>
+                        <segue destination="Z6f-nH-EPx" kind="show" identifier="digitEntrance" id="poo-2f-m9R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265" y="-215"/>
+        </scene>
+        <!--Validate Pin View Controller-->
+        <scene sceneID="de0-FH-wbL">
+            <objects>
+                <viewController id="Z6f-nH-EPx" customClass="ValidatePinViewController" customModule="CheckMobi_MissedCall" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Npp-Hf-fmv"/>
+                        <viewControllerLayoutGuide type="bottom" id="BpK-Id-u22"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wxG-6v-9Mb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4 Digits" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="27c-sN-eeG">
+                                <rect key="frame" x="56" y="222" width="262" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="262" id="Qre-rd-pNJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="j1y-21-0LR"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9K-Kq-m1Y">
+                                <rect key="frame" x="242" y="314" width="76" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="c6h-rC-XTf"/>
+                                    <constraint firstAttribute="width" constant="76" id="uc8-Qu-oCD"/>
+                                </constraints>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="validatePin:" destination="Z6f-nH-EPx" eventType="touchUpInside" id="zCj-lb-9Ze"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type in the last 4 Digits of the number that just called you. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9S-gs-jzP">
+                                <rect key="frame" x="56" y="136" width="250" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Rns-od-nln"/>
+                                    <constraint firstAttribute="width" constant="250" id="TyS-EO-GFo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="T9S-gs-jzP" firstAttribute="centerX" secondItem="wxG-6v-9Mb" secondAttribute="centerX" constant="-6.5" id="NYw-hC-7DE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j9K-Kq-m1Y" secondAttribute="trailing" constant="41" id="aXa-GI-mSe"/>
+                            <constraint firstItem="j9K-Kq-m1Y" firstAttribute="top" secondItem="27c-sN-eeG" secondAttribute="bottom" constant="62" id="bMY-Qp-Lvp"/>
+                            <constraint firstItem="T9S-gs-jzP" firstAttribute="centerY" secondItem="wxG-6v-9Mb" secondAttribute="centerY" constant="-172.5" id="kHT-vW-wby"/>
+                            <constraint firstItem="27c-sN-eeG" firstAttribute="centerY" secondItem="wxG-6v-9Mb" secondAttribute="centerY" constant="-96.5" id="mMe-EV-pZC"/>
+                            <constraint firstItem="27c-sN-eeG" firstAttribute="centerX" secondItem="wxG-6v-9Mb" secondAttribute="centerX" id="zzG-u3-bOK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirm" destination="j9K-Kq-m1Y" id="8RS-iF-3yY"/>
+                        <outlet property="validationDigits" destination="27c-sN-eeG" id="kKu-oK-o5F"/>
+                        <segue destination="lrQ-M6-GRl" kind="show" identifier="verificationSuccess" id="RwK-Qf-fka"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MH5-cz-hyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-442" y="-215"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YTO-62-Bhq">
+            <objects>
+                <viewController id="lrQ-M6-GRl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="K1E-DM-yem"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZbZ-Za-2m8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xNc-A5-LBH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations the Verification worked. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0y2-MN-awS">
+                                <rect key="frame" x="32" y="172" width="311" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="0y2-MN-awS" firstAttribute="centerX" secondItem="xNc-A5-LBH" secondAttribute="centerX" id="7hP-RR-Q9s"/>
+                            <constraint firstItem="0y2-MN-awS" firstAttribute="centerY" secondItem="xNc-A5-LBH" secondAttribute="centerY" constant="-151.25" id="gDy-4u-SGc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Sk-7S-TEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461.60000000000002" y="-215.44227886056973"/>
+        </scene>
+    </scenes>
+</document>
