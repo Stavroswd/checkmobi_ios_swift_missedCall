@@ -9,7 +9,8 @@ This simple but powerful verification is made by intercepting a missed call from
 ### Prerequisites
 
 There is no need to include the checkMobi Swift Framework since the missed call is handled by HTTP requests.
-In my case i used Alamofire as 
+In my case i used Alamofire as Network framework. You could also use something else like: 
+https://developer.apple.com/reference/foundation/urlsession. 
 
 ### Code
 
@@ -18,7 +19,6 @@ In my case i used Alamofire as
 
 import UIKit
 import Alamofire
-import CallKit
 
 class CheckMobi: NSObject {
     
@@ -109,4 +109,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-With the help of Silviu (Customer Service Checkmobi) 
+With the help of Silviu (Customer Service Checkmobi). 
