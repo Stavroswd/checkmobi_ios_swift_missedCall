@@ -97,7 +97,10 @@ class CheckMobi: NSObject {
 }
 
 ```
+## Missed Call Settings
 
+At the checkmobile clipboard you can also change the ring time and the pin length of your validation process. 
+https://cloud.githubusercontent.com/assets/15252364/25580040/995f92f8-2e7d-11e7-96e5-fb11a53ed2f5.png
 
 ## Frameworks used
 
